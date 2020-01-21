@@ -28,8 +28,7 @@ sudo apt install -y cmake cmake-data pkg-config python3-sphinx libcairo2-dev lib
 ### oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo apt install -y autojump
-echo ". /usr/share/autojump/autojump/sh" >> ~/.zshrc
-sed -i 's/^plugins=(.*)/plugins=(\n  git\n  python\n  pip\n  autojump\n  common-aliases\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n  command-not-found\n  cp\n  history\n  catimg\n  docker\n  extract\n  colorize\n  npm\n  sudo/g' ~/.zshrc
+sed -i 's/^plugins=(.*)/plugins=(\n  git\n  python\n  pip\n  autojump\n  common-aliases\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n  command-not-found\n  cp\n  history\n  catimg\n  docker\n  extract\n  colorize\n  npm\n  sudo\n)/g' ~/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 # restart terminal
