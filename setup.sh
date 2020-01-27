@@ -9,6 +9,19 @@ sudo apt update
 sudo apt install -y git vim zsh wget build-essential htop neofetch
 mkdir -p ~/Config
 chsh -s $(which zsh)
+
+### system config
+# to enable scratchpad "tap to click"
+sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
+Section "InputClass"
+        Identifier "touchpad"
+        MatchIsTouchpad "on"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection
+
+EOF
+
 # restart session
 
 ### system requirements
