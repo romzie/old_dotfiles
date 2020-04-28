@@ -21,7 +21,9 @@ systemctl mask packagekit
 git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
 # i3
 mkdir -p ~/.config/regolith/i3
-cp ~/.config/dotfiles/.i3config ~/.config/regolith/i3/config
+cp ~/.config/dotfiles/i3config ~/.config/regolith/i3/config
+# zsh
+cp ~/.config/dotfiles/.zshrc ~/.zshrc
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -63,6 +65,7 @@ cd
 ## terminal prompt powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 sed -i 's/ZSH_THEME=.*$/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
+cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # lsd
 wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd_0.17.0_amd64.deb
