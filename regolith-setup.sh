@@ -17,6 +17,12 @@ sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim
 systemctl stop packagekit
 systemctl mask packagekit
 
+## setup configs
+git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
+# i3
+mkdir -p ~/.config/regolith/i3
+cp ~/.config/dotfiles/.i3config ~/.config/regolith/i3/config
+
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sed -i 's/^plugins=(.*)/plugins=(\n  git\n  python\n  pip\n  autojump\n  common-aliases\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n  command-not-found\n  cp\n  history\n  catimg\n  docker\n  extract\n  colorize\n  npm\n  sudo\n)/g' ~/.zshrc
