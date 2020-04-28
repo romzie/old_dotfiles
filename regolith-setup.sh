@@ -58,4 +58,10 @@ cd
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 sed -i 's/ZSH_THEME=.*$/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
 
+# lsd
+wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd_0.17.0_amd64.deb
+sudo dpkg -i lsd_0.17.0_amd64.deb
+rm -f lsd_0.17.0_amd64.deb
+echo "alias ls='lsd'" >> ~/.zshrc # or add alias manually
+
 # restart session to finish installation
