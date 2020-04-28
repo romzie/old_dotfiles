@@ -1,5 +1,10 @@
 #! /bin/bash
 
+###
+# This is not a script to launch but rather a fully documented guide
+# since it requires a few manual steps (for git) and manual restarts
+###
+
 ### Regolith config setup file
 
 sudo add-apt-repository ppa:jonathonf/vim
@@ -7,6 +12,10 @@ sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 
 sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev cmake
+
+## disable automatic updates
+systemctl stop packagekit
+systemctl mask packagekit
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -23,26 +32,30 @@ rm -f DejaVuSansMono.zip
 fc-cache -fv
 cd
 
+## git
+git config --global user.email "my.email@here.fr"
+git config --global user.name "My Name"
+
 ## vim
 git clone --depth=1 https://github.com/romzie/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
-cd ~/.vim_runtime/sources_non_forked
-git clone https://github.com/yuttie/comfortable-motion.vim
-git clone https://github.com/xuyuanp/nerdtree-git-plugin
-git clone https://github.com/unblevable/quick-scope
-git clone https://github.com/nathanaelkane/vim-indent-guides
-git clone https://github.com/jamshedvesuna/vim-markdown-preview
-git clone https://github.com/sickill/vim-pasta
-git clone https://github.com/valloric/youcompleteme
+#cd ~/.vim_runtime/sources_non_forked
+#git clone https://github.com/yuttie/comfortable-motion.vim
+#git clone https://github.com/xuyuanp/nerdtree-git-plugin
+#git clone https://github.com/unblevable/quick-scope
+#git clone https://github.com/nathanaelkane/vim-indent-guides
+#git clone https://github.com/jamshedvesuna/vim-markdown-preview
+#git clone https://github.com/sickill/vim-pasta
+#git clone https://github.com/valloric/youcompleteme
 cd ~/.vim_runtime/sources_non_forked/youcompleteme
 git submodule update --init --recursive
 python3 install.py
 cd
 
-# restart terminal
+# restart terminal for fonts to load
 
 ## terminal prompt powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 sed -i 's/ZSH_THEME=.*$/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
 
-# restart terminal
+# restart session to finish installation
