@@ -21,12 +21,12 @@ systemctl mask packagekit
 git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
 # i3
 mkdir -p ~/.config/regolith/i3
-cp ~/.config/dotfiles/i3config ~/.config/regolith/i3/config
+cp ~/.config/dotfiles/i3.config ~/.config/regolith/i3/config
 # zsh
 cp ~/.config/dotfiles/.zshrc ~/.zshrc
 # compton
 mkdir -p ~/.config/regolith/compton
-cp ~/.config/dotfiles/compton.conf ~/.config/regolith/compton/config
+cp ~/.config/dotfiles/compton.config ~/.config/regolith/compton/config
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
