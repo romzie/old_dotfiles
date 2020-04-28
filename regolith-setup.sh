@@ -24,6 +24,9 @@ mkdir -p ~/.config/regolith/i3
 cp ~/.config/dotfiles/i3config ~/.config/regolith/i3/config
 # zsh
 cp ~/.config/dotfiles/.zshrc ~/.zshrc
+# compton
+mkdir -p ~/.config/regolith/compton
+cp ~/.config/dotfiles/compton.conf ~/.config/regolith/compton/config
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
