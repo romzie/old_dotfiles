@@ -29,13 +29,7 @@ mkdir -p ~/.config/regolith/compton
 cp ~/.config/dotfiles/compton.config ~/.config/regolith/compton/config
 # i3blocks
 mkdir -p ~/.config/regolith/i3xrocks
-cp ~/.config/dotfiles/i3xrocks.config /etc/regolith/i3xrocks/config
-sudo wget -O /usr/share/i3xrocks/disk-io https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/disk-io/disk-io
-sudo chmod +x /usr/share/i3xrocks/disk-io
-sudo wget -O /usr/share/i3xrocks/disk https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/disk/disk
-sudo chmod +x /usr/share/i3xrocks/disk
-sudo wget -O /usr/share/i3xrocks/shutdown_menu https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/shutdown_menu/shutdown_menu
-sudo chmod +x /usr/share/i3xrocks/shutdown_menu
+cp -r ~/.config/dotfiles/i3xrocks.conf.d ~/.config/regolith/i3xrocks/conf.d
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
