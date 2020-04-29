@@ -3,6 +3,8 @@
 ###
 # This is not a script to launch but rather a fully documented guide
 # since it requires a few manual steps (for git) and manual restarts
+#
+# For a VM, mount the Guest Additions ISO and run 'sudo bash autorun.sh'
 ###
 
 ### Regolith config setup file
@@ -27,6 +29,15 @@ cp ~/.config/dotfiles/.zshrc ~/.zshrc
 # compton
 mkdir -p ~/.config/regolith/compton
 cp ~/.config/dotfiles/compton.config ~/.config/regolith/compton/config
+# i3blocks
+mkdir -p ~/.config/regolith/i3xrocks
+cp ~/.config/dotfiles/i3xrocks.config /etc/regolith/i3xrocks/config
+sudo wget -O /usr/share/i3xrocks/disk-io https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/disk-io/disk-io
+sudo chmod +x /usr/share/i3xrocks/disk-io
+sudo wget -O /usr/share/i3xrocks/disk https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/disk/disk
+sudo chmod +x /usr/share/i3xrocks/disk
+sudo wget -O /usr/share/i3xrocks/shutdown_menu https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/shutdown_menu/shutdown_menu
+sudo chmod +x /usr/share/i3xrocks/shutdown_menu
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -70,10 +81,10 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/the
 sed -i 's/ZSH_THEME=.*$/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
 cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 
-# lsd
+## lsd
 wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd_0.17.0_amd64.deb
 sudo dpkg -i lsd_0.17.0_amd64.deb
 rm -f lsd_0.17.0_amd64.deb
 echo "alias ls='lsd'" >> ~/.zshrc # or add alias manually
 
-# restart session to finish installation
+# reboot to finish installation
