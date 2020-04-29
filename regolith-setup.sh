@@ -24,8 +24,6 @@ git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
 # i3
 mkdir -p ~/.config/regolith/i3
 cp ~/.config/dotfiles/i3.config ~/.config/regolith/i3/config
-# zsh
-cp ~/.config/dotfiles/.zshrc ~/.zshrc
 # compton
 mkdir -p ~/.config/regolith/compton
 cp ~/.config/dotfiles/compton.config ~/.config/regolith/compton/config
@@ -41,7 +39,6 @@ sudo chmod +x /usr/share/i3xrocks/shutdown_menu
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sed -i 's/^plugins=(.*)/plugins=(\n  git\n  python\n  pip\n  autojump\n  common-aliases\n  zsh-autosuggestions\n  zsh-syntax-highlighting\n  command-not-found\n  cp\n  history\n  catimg\n  docker\n  extract\n  colorize\n  npm\n  sudo\n)/g' ~/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
@@ -61,30 +58,24 @@ git config --global user.name "My Name"
 ## vim
 git clone --depth=1 https://github.com/romzie/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
-#cd ~/.vim_runtime/sources_non_forked
-#git clone https://github.com/yuttie/comfortable-motion.vim
-#git clone https://github.com/xuyuanp/nerdtree-git-plugin
-#git clone https://github.com/unblevable/quick-scope
-#git clone https://github.com/nathanaelkane/vim-indent-guides
-#git clone https://github.com/jamshedvesuna/vim-markdown-preview
-#git clone https://github.com/sickill/vim-pasta
-#git clone https://github.com/valloric/youcompleteme
-cd ~/.vim_runtime/sources_non_forked/youcompleteme
+cd ~/.vim_runtime
 git submodule update --init --recursive
+cd ~/.vim_runtime/sources_non_forked/youcompleteme
 python3 install.py
 cd
 
-# restart terminal for fonts to load
+# restart session for shell to switch
 
 ## terminal prompt powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-sed -i 's/ZSH_THEME=.*$/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
 cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 ## lsd
 wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd_0.17.0_amd64.deb
 sudo dpkg -i lsd_0.17.0_amd64.deb
 rm -f lsd_0.17.0_amd64.deb
-echo "alias ls='lsd'" >> ~/.zshrc # or add alias manually
+
+# finish shell config customization by replacing the zshrc
+cp ~/.config/dotfiles/.zshrc ~/.zshrc
 
 # reboot to finish installation
