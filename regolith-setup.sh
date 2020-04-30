@@ -72,4 +72,16 @@ rm -f lsd_0.17.0_amd64.deb
 # finish shell config customization by replacing the zshrc
 cp ~/.config/dotfiles/.zshrc ~/.zshrc
 
+## keybindings
+## to replace in /etc/regolith/i3/config
+# bindsym $mod+d exec $i3-wm.program.launcher.app
+# bindsym $mod+Shift+d exec $i3-wm.program.launcher.cmd
+# bindsym $mod+Ctrl+d exec $i3-wm.program.launcher.window
+# bindsym $mod+s split toggle
+## to add
+# bindsym $mod+v split v
+# bindsym $mod+b split h
+# workspace_auto_back_and_forth yes
+# exec --no-startup-id xhost +local:docker
+
 # reboot to finish installation
