@@ -1,0 +1,16 @@
+## Mod and win keys
+i3-wm.mod: Mod1
+i3-wm.alt: Mod4
+
+## i3-wm
+i3-wm.window.border.size: 3
+i3-wm.floatingwindow.border.size: 3
+i3-wm.gaps.inner.size: 12
+i3-wm.gaps.outer.size: 12
+i3-wm.gaps.smart: inverse_outer
+i3-wm.gaps.focus_follows_mouse: yes
+i3-wm.font: "pango:DejaVu Sans Mono 8"
+
+## i3 bar
+i3-wm.bar.position: top
+i3-wm.bar.font: "pango:DejaVu Sans Mono 8"
