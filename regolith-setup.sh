@@ -13,11 +13,16 @@ sudo add-apt-repository ppa:jonathonf/vim
 
 sudo apt update
 
-sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev cmake
+sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx
+
+pip3 install i3ipc
 
 ## disable automatic updates
 systemctl stop packagekit
 systemctl mask packagekit
+
+## enable verr num on startup
+echo "greeter-setup-script=/usr/bin/numlockx on" >> /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf
 
 ## setup configs
 git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
@@ -78,10 +83,13 @@ cp ~/.config/dotfiles/.zshrc ~/.zshrc
 # bindsym $mod+Shift+d exec $i3-wm.program.launcher.cmd
 # bindsym $mod+Ctrl+d exec $i3-wm.program.launcher.window
 # bindsym $mod+s split toggle
+# focus_follows_mouse $i3-wm.gaps.focus_follows_mouse
 ## to add
 # bindsym $mod+v split v
 # bindsym $mod+b split h
 # workspace_auto_back_and_forth yes
 # exec --no-startup-id xhost +local:docker
+## to comment
+# binding $mod+d and $mod+b
 
 # reboot to finish installation

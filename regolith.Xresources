@@ -6,11 +6,53 @@ i3-wm.alt: Mod4
 i3-wm.window.border.size: 3
 i3-wm.floatingwindow.border.size: 3
 i3-wm.gaps.inner.size: 12
-i3-wm.gaps.outer.size: 12
+i3-wm.gaps.outer.size: 0
 i3-wm.gaps.smart: inverse_outer
 i3-wm.gaps.focus_follows_mouse: yes
-i3-wm.font: "pango:DejaVu Sans Mono 8"
+i3-wm.font: pango:DejaVu Sans Mono 8
+
+## terminal
+gnome.terminal.font: DejaVu Sans Mono 12
 
 ## i3 bar
 i3-wm.bar.position: top
-i3-wm.bar.font: "pango:DejaVu Sans Mono 8"
+i3-wm.bar.font: pango:DejaVu Sans Mono 12
+i3-wm.bar.trayoutput: primary
+i3-wm.bar.stripworkspacenumbers: yes
+
+## rofi
+rofi.font: DejaVuSansMono 12
+
+## i3xrocks
+i3xrocks.date.format2: + %A %e %B %Y  %H:%M
+i3xrocks.label.notify.error: 
+i3xrocks.label.notify.none: 
+i3xrocks.label.notify.some: 
+i3xrocks.label.time: 
+i3xrocks.label.memory: 
+i3xrocks.label.cpu: 
+i3xrocks.label.wifi:  
+i3xrocks.label.up: 
+i3xrocks.label.dn: 
+i3xrocks.value.font: DejaVu Sans Mono 12
+
+## i3 workspaces
+i3-wm.workspace.01.name: 1:I
+i3-wm.workspace.02.name: 2:II
+i3-wm.workspace.03.name: 3:III
+i3-wm.workspace.04.name: 4:IV
+i3-wm.workspace.05.name: 5:V
+i3-wm.workspace.06.name: 6:VI
+i3-wm.workspace.07.name: 7:VII
+i3-wm.workspace.08.name: 8:VIII
+i3-wm.workspace.09.name: 9:IX
+i3-wm.workspace.10.name: 10:X
+i3-wm.workspace.11.name: 11:XI
+i3-wm.workspace.12.name: 12:XII
+i3-wm.workspace.13.name: 13:XIII
+i3-wm.workspace.14.name: 14:XIV
+i3-wm.workspace.15.name: 15:XV
+i3-wm.workspace.16.name: 16:XVI
+i3-wm.workspace.17.name: 17:XVII
+i3-wm.workspace.18.name: 18:XVIII
+i3-wm.workspace.19.name: 19:XIX
