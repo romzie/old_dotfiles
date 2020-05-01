@@ -18,11 +18,11 @@ sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim
 pip3 install i3ipc
 
 ## disable automatic updates
-systemctl stop packagekit
-systemctl mask packagekit
+sudo systemctl stop packagekit
+sudo systemctl mask packagekit
 
 ## enable verr num on startup
-echo "greeter-setup-script=/usr/bin/numlockx on" >> /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf
+sudo bash -c "echo \"greeter-setup-script=/usr/bin/numlockx on\" >> /usr/share/lightdm/lightdm.conf.d/60-lightdm-gtk-greeter.conf"
 
 ## setup configs
 git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
@@ -38,6 +38,8 @@ cp -r ~/.config/dotfiles/i3xrocks.conf.d ~/.config/regolith/i3xrocks/conf.d
 # gnome terminal
 mkdir -p ~/.config/gtk-3.0
 cp ~/.config/dotfiles/gtk.css ~/.config/gtk-3.0/gtk.css
+# Xresources
+cp ~/.config/dotfiles/regolith.Xresources ~/.config/regolith/Xresources
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -66,12 +68,6 @@ cd ~/.vim_runtime/sources_non_forked/youcompleteme
 python3 install.py
 cd
 
-# restart session for shell to switch
-
-## terminal prompt powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
-
 ## lsd
 wget https://github.com/Peltoche/lsd/releases/download/0.17.0/lsd_0.17.0_amd64.deb
 sudo dpkg -i lsd_0.17.0_amd64.deb
@@ -79,5 +75,9 @@ rm -f lsd_0.17.0_amd64.deb
 
 # finish shell config customization by replacing the zshrc
 cp ~/.config/dotfiles/.zshrc ~/.zshrc
+
+## terminal prompt powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # reboot to finish installation
