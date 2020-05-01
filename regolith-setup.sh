@@ -13,7 +13,7 @@ sudo add-apt-repository ppa:jonathonf/vim
 
 sudo apt update
 
-sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx libnotify-bin ranger
+sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx libnotify-bin ranger highlight
 
 pip3 install i3ipc
 
