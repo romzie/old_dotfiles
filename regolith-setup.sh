@@ -35,6 +35,9 @@ cp ~/.config/dotfiles/compton.config ~/.config/regolith/compton/config
 # i3blocks
 mkdir -p ~/.config/regolith/i3xrocks
 cp -r ~/.config/dotfiles/i3xrocks.conf.d ~/.config/regolith/i3xrocks/conf.d
+# gnome terminal
+mkdir -p ~/.config/gtk-3.0
+cp ~/.config/dotfiles/gtk.css ~/.config/gtk-3.0/gtk.css
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -76,20 +79,5 @@ rm -f lsd_0.17.0_amd64.deb
 
 # finish shell config customization by replacing the zshrc
 cp ~/.config/dotfiles/.zshrc ~/.zshrc
-
-## keybindings
-## to replace in /etc/regolith/i3/config
-# bindsym $mod+d exec $i3-wm.program.launcher.app
-# bindsym $mod+Shift+d exec $i3-wm.program.launcher.cmd
-# bindsym $mod+Ctrl+d exec $i3-wm.program.launcher.window
-# bindsym $mod+s split toggle
-# focus_follows_mouse $i3-wm.gaps.focus_follows_mouse
-## to add
-# bindsym $mod+v split v
-# bindsym $mod+b split h
-# workspace_auto_back_and_forth yes
-# exec --no-startup-id xhost +local:docker
-## to comment
-# binding $mod+d and $mod+b
 
 # reboot to finish installation
