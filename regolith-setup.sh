@@ -13,7 +13,7 @@ sudo add-apt-repository ppa:jonathonf/vim
 
 sudo apt update
 
-sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx
+sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx libnotify-bin ranger
 
 pip3 install i3ipc
 
@@ -40,6 +40,9 @@ mkdir -p ~/.config/gtk-3.0
 cp ~/.config/dotfiles/gtk.css ~/.config/gtk-3.0/gtk.css
 # Xresources
 cp ~/.config/dotfiles/regolith.Xresources ~/.config/regolith/Xresources
+# ranger
+ranger --copy-config=all
+cp ~/.config/dotfiles/ranger.config ~/.config/ranger/rc.conf
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
