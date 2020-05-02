@@ -48,6 +48,14 @@ cp ~/.config/dotfiles/ranger.config ~/.config/ranger/rc.conf
 mkdir -p ~/.config/rofi
 cp ~/.config/dotfiles/rapp-launcher.rasi ~/.config/rofi/app-launcher.rasi
 
+## plymouth theme
+wget https://github.com/adi1090x/files/raw/master/plymouth-themes/themes/pack_1/cuts_alt.tar.gz
+tar -xzvf cuts_alt.tar.gz
+sudo mv cuts_alt /usr/share/plymouth/themes/cuts_alt
+sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/cuts_alt/cuts_alt.plymouth 100
+sudo update-initramfs -u
+rm -f cuts_alt.tar.gz
+
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
