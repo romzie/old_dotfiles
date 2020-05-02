@@ -10,10 +10,11 @@
 ### Regolith config setup file
 
 sudo add-apt-repository ppa:jonathonf/vim
+sudo add-apt-repository ppa:papirus/papirus
 
 sudo apt update
 
-sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx libnotify-bin ranger highlight
+sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump vim python3-dev python3-pip cmake numlockx libnotify-bin ranger highlight papirus-icon-theme
 
 pip3 install i3ipc
 
@@ -43,6 +44,9 @@ cp ~/.config/dotfiles/regolith.Xresources ~/.config/regolith/Xresources
 # ranger
 ranger --copy-config=all
 cp ~/.config/dotfiles/ranger.config ~/.config/ranger/rc.conf
+# rofi
+mkdir -p ~/.config/rofi
+cp ~/.config/dotfiles/rapp-launcher.rasi ~/.config/rofi/app-launcher.rasi
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

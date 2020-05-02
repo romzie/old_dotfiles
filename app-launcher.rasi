@@ -1,0 +1,99 @@
+/* global settings and color variables */
+
+configuration {
+    show-icons: true;
+    drun-display-format: "{icon} {name}";
+    display-drun: "Applications";
+    eh: 1;
+}
+
+* {
+    blue:             #a6e1ff;
+    darkblue:         #B48EAD;
+    cyan:             #95e6cb;
+    lightcyan:        #B48EAD;
+    green:            #cee6ac;
+    red:              #ff6666;
+
+    dark1:            #1f2430;
+    dark2:            #292b30;
+    dark3:            #bfbab0;
+    dark4:            #bfbab0;
+
+    light1:           #e6e1cf;
+    true-transparent: #00000000;
+
+    background-color: @dark1;
+    border-color:     @dark2;
+    text-color:       @dark3;
+    dark-text-color:  @dark4;
+    main-color:       @blue;
+    highlight:        @light1;
+    urgent-color:     @red;
+    selected-color:   @lightcyan;
+    no-color:         @dark-transparent;
+
+    default-border-radius: 10px;
+    default-margin: 3px 3px;
+}
+
+window, mainbox, listview {
+    background-color: @true-transparent;
+}
+
+window {
+    width: 100%;
+    height: 100%;
+    padding: 20% 25% 20% 25%;
+    fullscreen: true;
+    transparency: "real";
+    position: center;
+    anchor: center;
+}
+
+inputbar, prompt, textbox-prompt-colon, entry, element {
+    background-color: @border-color;
+    border-radius: @default-border-radius;
+    text-color: @highlight;
+}
+
+inputbar, element {
+    margin: @default-margin;
+}
+
+inputbar {
+    children: [ prompt, textbox-prompt-colon, entry ];
+}
+
+listview {
+    dynamic: true;
+    layout: vertical;
+}
+
+prompt {
+    padding: 15px 20px;
+    background-color: @selected-color;
+    text-color: @border-color;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: " ::  ";
+    padding: 15px -5px 0px 0px;
+}
+
+entry {
+    padding: 15px 15px 15px 0px;
+}
+
+element {
+    padding: 25px;
+    border: 0px 10px 0px 10px;
+    border-color: @border-color;
+}
+
+element.selected {
+    background-color: @border-color;
+    text-color: @selected-color;
+    border-color: @selected-color;
+}

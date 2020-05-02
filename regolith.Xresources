@@ -22,7 +22,10 @@ i3-wm.bar.trayoutput: primary
 i3-wm.bar.stripworkspacenumbers: yes
 
 ## rofi
-rofi.font: DejaVuSansMono 12
+rofi.theme: ~/.config/rofi/app-launcher.rasi
+rofi.icon-theme: Papirus
+rofi.font: DejaVuSansMono 14
+rofi.kb-clear-line: Control+c
 
 ## i3xrocks
 i3xrocks.date.format2: + %A %e %B %Y  %H:%M
