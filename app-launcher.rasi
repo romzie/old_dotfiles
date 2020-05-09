@@ -68,6 +68,7 @@ inputbar {
 listview {
     dynamic: true;
     layout: vertical;
+    columns: 3;
 }
 
 prompt {

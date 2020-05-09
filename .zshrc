@@ -76,18 +76,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    python
-    pip
-    autojump
-    common-aliases
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    command-not-found
-    cp
-    history
-    extract
-    sudo
+    git  # aliases
+    python  # aliases (ipython, pyfind, pygrep, pyclean)
+    pip  # adds completion
+    autojump  # magic dir jumps
+    common-aliases  # aliases (ls, rm, mv...)
+    command-not-found  # suggests package to install
+    cp  # more cp options, like progress bar
+    history  # aliases (h, hsi)
+    extract  # smart archive extraction cmd
+    sudo  # 2x Esc key to add sudo to last or current cmd
+    colored-man-pages  # add colors to man pages
+    you-should-use  # add aliases reminders
+    zsh-autosuggestions  # last cmd suggestion
+    #zsh-autocomplete  # on the fly commands completion
+    zsh-syntax-highlighting  # cmd syntax highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,6 +121,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='lsd'
+alias python='python3'
+alias pip='pip3'
+
+hapycolor() {
+    old_dir=$(pwd)
+    cd ~/.config/hapycolor
+    python -m hapycolor -f $1 --json ~/.config/hapycolor_palettes
+}
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 

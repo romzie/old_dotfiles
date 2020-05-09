@@ -1,0 +1,67 @@
+configuration {
+    drun-display-format: "{name}";
+    eh: 1;
+}
+
+* {
+    lightcyan:        #B48EAD;
+    dark1:            #1f2430;
+    dark2:            #292b30;
+    light1:           #e6e1cf;
+    true-transparent: #00000000;
+
+    background-color: @dark1;
+    border-color:     @dark2;
+    highlight:        @light1;
+    selected-color:   @lightcyan;
+}
+
+window, mainbox, listview {
+    background-color: @true-transparent;
+    spacing: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+window {
+    padding: 45% 23% 41% 23%;
+    fullscreen: true;
+    transparency: "real";
+    font: "DejaVuSansMono 42";
+}
+
+listview {
+    layout: horizontal;
+    spacing: 1%;
+}
+
+inputbar, prompt, textbox-prompt-colon, entry {
+    enabled: false;
+}
+
+// WIDTH CALCULATION
+// X-1 + X*Y + 2*Z = 100
+// donc le nombre d'icones X est impair, et Y (element width) est pair
+// bonnes combis : 5 icones, Y=10, Z=23 (Z est le window padding left/right)
+// 7 icones, Y=8, Z=19; 9 icones, Y=6, Z=19 ou bien Y=8, Z=10
+// 3 icones, Y=12, Z=31 ou bien Y=14, Z=28
+// HEIGHT CALCULATION
+// 45 et 41 marchent bien pour le window padding
+// reste à ajuster l'element padding et la taille de la font
+element {
+    background-color: @border-color;
+    text-color: @highlight;
+    padding: 4% 0%;
+    width: 10%;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    border: 0px 10px 0px 10px;
+    border-radius: 10px;
+    border-color: @border-color;
+}
+
+element.selected {
+    text-color: @selected-color;
+    border-color: @selected-color;
+}
