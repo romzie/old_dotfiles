@@ -9,7 +9,7 @@ cp ~/.config/regolith/i3/config ${dotfiles_folder}/i3.config
 cp ~/.config/regolith/compton/config ${dotfiles_folder}/compton.config
 
 # polybar
-cp -r ~/.config/polybar ${dotfiles_folder}/polybar
+cp -r ~/.config/polybar ${dotfiles_folder}
 
 # ranger
 cp ~/.config/ranger/rc.conf ${dotfiles_folder}/ranger.config

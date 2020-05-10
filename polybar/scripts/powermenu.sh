@@ -4,7 +4,7 @@ rofi_cmd="rofi -theme $HOME/.config/polybar/scripts/powermenu.rasi"
 
 shutdown=""
 reboot=""
-suspend="鈴"
+suspend=""
 logout=""
 lock=""
 

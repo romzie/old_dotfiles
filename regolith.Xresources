@@ -1,4 +1,4 @@
-#include "../hapycolor_palettes/hapycolor.Xresources"
+#include "../hapycolor_palettes/.hapycolor.Xresources"
 
 ## Mod and win keys
 i3-wm.mod: Mod1
@@ -50,20 +50,10 @@ rofi.font: DejaVuSansMono 14
 rofi.kb-clear-line: Control+c
 
 ## polybar
-polybar.color.bg: #1F2430
-polybar.color.border: #1F2430
-polybar.color.fg: #1F2430
-polybar.module.bg: #E6E1CF
 polybar.module.padding: 1
-polybar.module.bg.urgent: #FF3333
 polybar.module.icon.padding: 1
-polybar.module.cpu.bg: #FF3333
 polybar.module.cpu.icon: 
-polybar.module.cpu.icon.bg: #A47E9D
 polybar.module.date.icon: 
-polybar.module.date.icon.bg: #CFA550
-polybar.module.i3.fg: #E6E1CF
-polybar.module.i3.fg.urgent: #FF3333
 polybar.module.i3.icon.ws.default: 
 polybar.module.i3.icon.ws1: 1;➊
 polybar.module.i3.icon.ws2: 2;➋
@@ -76,18 +66,16 @@ polybar.module.i3.icon.ws8: 8;➑
 polybar.module.i3.icon.ws9: 9;➒
 polybar.module.i3.icon.ws10: 10;➓
 polybar.module.memory.icon: 
-polybar.module.memory.icon.bg: #769C40
 polybar.module.separator.content: |
 polybar.module.separator.padding: 0
 polybar.module.stock.icon: 
-polybar.module.stock.icon.bg: #964308
+polybar.module.powermenu.content: Power
 polybar.module.powermenu.icon: 
-polybar.module.powermenu.icon.bg: #B26C60
+polybar.module.theme-switcher.content: Theme
+polybar.module.theme-switcher.icon: 
 polybar.module.time.icon: 
-polybar.module.time.icon.bg: #6A6C60
 polybar.module.title.max-size: 40
 polybar.module.title.icon: 
-polybar.module.title.icon.bg: #2B639B
 polybar.module.tray.max-size: 16
 polybar.size.vborder: 6
 polybar.size.hborder: 24
