@@ -18,7 +18,7 @@ cp ~/.config/ranger/rc.conf ${dotfiles_folder}/ranger.config
 cp ~/.config/gtk-3.0/gtk.css ${dotfiles_folder}/gtk.css
 
 # rofi
-cp ~/.config/rofi/app-launcher.rasi ${dotfiles_folder}/app-launcher.rasi
+cp -r ~/.config/rofi ${dotfiles_folder}
 
 # Xresources
 cp ~/.config/regolith/Xresources ${dotfiles_folder}/regolith.Xresources

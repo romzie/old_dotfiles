@@ -1,11 +1,16 @@
 #! /bin/bash
 
-rofi_cmd="rofi -theme $HOME/.config/polybar/scripts/theme_switcher.rasi -dmenu -selected-row 0 -markup-rows"
+rofi_theme=/home/$USER/.config/rofi/theme_switcher.rasi
+rofi_cmd="rofi -theme $rofi_theme -dmenu -selected-row 0 -markup-rows"
 
 wallpapers_dir=/media/shared/wallpapers
 palettes_dir=/home/$USER/.config/hapycolor_palettes
 hapycolor_dir=/home/$USER/.config/hapycolor
-palette_config_file=$palettes_dir/.hapycolor.Xresources
+rofi_dir=/home/$USER/.config/rofi
+
+palette_config_file_Xresources=$palettes_dir/.hapycolor.Xresources
+palette_config_file_rasi=$rofi_dir/hapycolor.rasi
+
 nb_max_rows=36  # to set manually according to preferences
 max_name_len=10  # to set manually to fit window width
 
@@ -27,20 +32,26 @@ fi
 
 # add palette colors next to palette name
 options=""
-for palette in $(ls $palettes_dir); do
-    name=$(echo $palette | sed -e 's/\.Xresources//')
+for image_name in $(ls $wallpapers_dir); do
+    image_name=$(echo $image_name | xargs basename | sed -e 's/\..*//')
+    name=$image_name
     if [[ ${#name} -gt ${max_name_len} ]]; then
         name=${name:0:${max_name_len}}
     fi
-
-
-    Xresources=$palettes_dir/$palette
     options="${options}${name}  "
-    for i in {0..15}; do
-        hex_code=$(cat $Xresources | grep "color$i:" | awk -F '#' '{print $2}')
-        hex_code=${hex_code^^}
-        options="${options}<span foreground=\"#${hex_code}\">██</span>"
-    done
+
+    Xresources=$palettes_dir/$image_name.Xresources
+
+    if [[ -f $Xresources ]]; then
+        for i in {0..15}; do
+            hex_code=$(cat $Xresources | grep "color$i:" | awk -F '#' '{print $2}')
+            hex_code=${hex_code^^}
+            options="${options}<span foreground=\"#${hex_code}\">██</span>"
+        done
+    else
+        options="${options}                "
+        options="${options}                "
+    fi
     options="${options}"$'\n'
 done
 
@@ -51,20 +62,27 @@ case $choice in
         ;;
     $refresh)
         cd $hapycolor_dir
-        python3 -m hapycolor --dir $wallpapers_dir --Xresources $palettes_dir &
+        python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir &
         ;;
     $refresh_all)
-        palette_save=/tmp/hapy_palette_save.Xresources
-        cp $palette_config_file $palette_save
+        palette_save_Xresources=/tmp/hapy_palette_save.Xresources
+        palette_save_rasi=/tmp/hapy_palette_save.rasi
+        cp $palette_config_file_Xresources $palette_save_Xresources
+        cp $palette_config_file_rasi $palette_save_rasi
         rm -f $palettes_dir/*
-        cp $palette_save $palette_config_file
+        cp $palette_save_Xresources $palette_config_file_Xresources
+        cp $palette_save_rasi $palette_config_file_rasi
         cd $hapycolor_dir
-        python3 -m hapycolor --dir $wallpapers_dir --Xresources $palettes_dir --refresh &
+        python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir --refresh &
         ;;
     *)
-        palette_chosen=$(echo $choice | awk -F ' ' '{print $1}')
-        cp $palettes_dir/$palette_chosen.Xresources $palette_config_file
+        palette_short_name=$(echo $choice | awk -F ' ' '{print $1}')
+        wallpaper=$(ls $wallpapers_dir | grep $palette_short_name)
+        palette_name=${wallpaper%.*}
+        cp $palettes_dir/$palette_name.Xresources $palette_config_file_Xresources
+        cp $palettes_dir/$palette_name.rasi $palette_config_file_rasi
+        cp $wallpapers_dir/$wallpaper ~/.config/wallpaper.jpg
         regolith-look refresh
-        bash /home/$USER/.config/polybar/launch.sh &
+        polybar-msg cmd restart
         ;;
 esac

@@ -13,7 +13,7 @@ fi
 
 while :
 do
-    dayhour=$(date "+%H")
+    dayhour=$(date "+%k")
 
     if [[ $dayhour -lt 8 || $dayhour -gt 18 ]]; then
         sleep_duration=$long_sleep

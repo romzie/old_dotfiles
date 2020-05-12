@@ -76,20 +76,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    autojump  # magic dir jumps
+    colored-man-pages  # add colors to man pages
+    command-not-found  # suggests package to install
+    common-aliases  # aliases (ls, rm, mv...)
+    cp  # adds cpv: cp with more options, like progress bar
+    extract  # smart archive extraction cmd
     git  # aliases
+    history  # aliases (h, hsi)
     python  # aliases (ipython, pyfind, pygrep, pyclean)
     pip  # adds completion
-    autojump  # magic dir jumps
-    common-aliases  # aliases (ls, rm, mv...)
-    command-not-found  # suggests package to install
-    cp  # more cp options, like progress bar
-    history  # aliases (h, hsi)
-    extract  # smart archive extraction cmd
     sudo  # 2x Esc key to add sudo to last or current cmd
-    colored-man-pages  # add colors to man pages
+    title  # remove host and user from terminal title
     you-should-use  # add aliases reminders
+    zsh-autocomplete  # on the fly suggestion grid (source before syntax-highlight)
     zsh-autosuggestions  # last cmd suggestion
-    #zsh-autocomplete  # on the fly commands completion
     zsh-syntax-highlighting  # cmd syntax highlighting
 )
 
@@ -116,22 +117,19 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cp='cpv --progress -hhh'
 alias ls='lsd'
-alias python='python3'
 alias pip='pip3'
+alias python='python3'
+alias rmf='rm -f'
+alias zshrc='vim ~/.zshrc'
 
-hapycolor() {
-    old_dir=$(pwd)
-    cd ~/.config/hapycolor
-    python -m hapycolor -f $1 --json ~/.config/hapycolor_palettes
-}
-
+# Set zsh plugin variables and settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+PROMPT_TITLE='${PWD}'
+bindkey -M menuselect $key[Tab] menu-complete
 
+# Set custom global variables
 export EDITOR="vim"
 export RANGER_LOAD_DEFAULT_RC='FALSE'
 

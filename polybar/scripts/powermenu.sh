@@ -1,6 +1,7 @@
 #! /bin/bash
 
-rofi_cmd="rofi -theme $HOME/.config/polybar/scripts/powermenu.rasi"
+rofi_theme=/home/$USER/.config/rofi/powermenu.rasi
+rofi_cmd="rofi -theme $rofi_theme -dmenu -selected-row 0"
 
 shutdown=""
 reboot=""
@@ -10,7 +11,7 @@ lock=""
 
 options="$lock\n$logout\n$suspend\n$reboot\n$shutdown"
 
-choice="$(echo -e "$options" | $rofi_cmd -dmenu -selected-row 0)"
+choice="$(echo -e "$options" | $rofi_cmd)"
 
 case $choice in
     $shutdown)

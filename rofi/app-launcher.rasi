@@ -7,31 +7,14 @@ configuration {
     eh: 1;
 }
 
+@import "hapycolor.rasi"
+
 * {
-    blue:             #a6e1ff;
-    darkblue:         #B48EAD;
-    cyan:             #95e6cb;
-    lightcyan:        #B48EAD;
-    green:            #cee6ac;
-    red:              #ff6666;
-
-    dark1:            #1f2430;
-    dark2:            #292b30;
-    dark3:            #bfbab0;
-    dark4:            #bfbab0;
-
-    light1:           #e6e1cf;
     true-transparent: #00000000;
-
-    background-color: @dark1;
-    border-color:     @dark2;
-    text-color:       @dark3;
-    dark-text-color:  @dark4;
-    main-color:       @blue;
-    highlight:        @light1;
-    urgent-color:     @red;
-    selected-color:   @lightcyan;
-    no-color:         @dark-transparent;
+    background-color: @bg;
+    border-color:     @bg;
+    text-color:       @fg;
+    selected-color:   @color2;
 
     default-border-radius: 10px;
     default-margin: 3px 3px;
@@ -48,9 +31,9 @@ window {
 }
 
 inputbar, prompt, textbox-prompt-colon, entry, element {
-    background-color: @border-color;
+    background-color: @background-color;
     border-radius: @default-border-radius;
-    text-color: @highlight;
+    text-color: @text-color;
 }
 
 inputbar, element {
@@ -70,7 +53,7 @@ listview {
 prompt {
     padding: 15px 20px;
     background-color: @selected-color;
-    text-color: @border-color;
+    text-color: @background-color;
 }
 
 textbox-prompt-colon {

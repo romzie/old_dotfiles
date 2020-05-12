@@ -38,6 +38,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
+git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
 
 ## nerd fonts
 mkdir -p ~/.local/share/fonts
@@ -85,8 +86,7 @@ ranger --copy-config=all
 cp ~/.config/dotfiles/ranger.config ~/.config/ranger/rc.conf
 
 # rofi
-mkdir -p ~/.config/rofi
-cp ~/.config/dotfiles/rapp-launcher.rasi ~/.config/rofi/app-launcher.rasi
+cp -r ~/.config/dotfiles/rofi ~/.config/rofi
 
 # polybar
 cp -r ~/.config/dotfiles/polybar ~/.config/polybar
@@ -94,6 +94,9 @@ cp -r ~/.config/dotfiles/polybar ~/.config/polybar
 # powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
+
+# wallpaper
+touch ~/.config/wallpaper.jpg
 
 
 ### OTHER INSTALLATIONS

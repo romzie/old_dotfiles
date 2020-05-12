@@ -37,7 +37,7 @@ i3-wm.workspace.19.name: 19
 gnome.terminal.font: DejaVuSansMono Nerd Font 12
 
 ## i3 bar
-i3-wm.bar.mode: hide
+i3-wm.bar.mode: invisible
 i3-wm.bar.position: top
 i3-wm.bar.font: pango:DejaVu Sans Mono 12
 i3-wm.bar.trayoutput: primary
@@ -66,7 +66,6 @@ polybar.module.i3.icon.ws8: 8;➑
 polybar.module.i3.icon.ws9: 9;➒
 polybar.module.i3.icon.ws10: 10;➓
 polybar.module.memory.icon: 
-polybar.module.separator.content: |
 polybar.module.separator.padding: 0
 polybar.module.stock.icon: 
 polybar.module.powermenu.content: Power

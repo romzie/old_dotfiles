@@ -11,15 +11,16 @@ QUOTE_URL = 'https://finnhub.io/api/v1/quote?symbol={}&token=bqpshcvrh5rcg6od3n3
 symbols = [
     ('BNP.PA', 'BNP Paribas'),
     ('AIR.PA', 'Airbus'),
-    ('UG.PA', 'Peugeot'),
     ('GLE.PA', 'Societe Generale'),
-    ('LI.PA', 'Klepierre'),
     ('AC.PA', 'Accor')
 ]
 
 for symbol, name in symbols:
     r = requests.get(QUOTE_URL.format(symbol))
-    info = r.json()
+    try:
+        info = r.json()
+    except:
+        continue
 
     change = (info['c'] - info['pc']) * 100 / info['pc']
     change_sign = '+' if change >= 0 else '-'
