@@ -11,8 +11,8 @@
 
 ### GENERAL APT
 
-sudo add-apt-repository ppa:jonathonf/vim
-sudo add-apt-repository ppa:papirus/papirus
+sudo add-apt-repository ppa:jonathonf/vim -y
+sudo add-apt-repository ppa:papirus/papirus -y
 
 sudo apt update
 
@@ -118,6 +118,7 @@ make -j$(nproc)
 sudo make install
 cd ~/.config
 rm -f polybar-3.4.2.tar
+cd
 
 ## plymouth theme
 wget https://github.com/adi1090x/files/raw/master/plymouth-themes/themes/pack_1/cuts_alt.tar.gz
