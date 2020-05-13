@@ -4,8 +4,10 @@
 # This is not a script to launch but rather a fully documented guide
 # since it requires a few manual steps (for git) and manual restarts
 #
-# For a VM, mount the Guest Additions ISO and run 'sudo bash autorun.sh'
-# Also run 'sudo adduser $USER vboxsf' to access shared folders
+# For a VM, mount the Guest Additions ISO and
+# run 'sudo apt install -y build-essential dkms'
+# then run 'sudo bash autorun.sh'
+# then run 'sudo adduser $USER vboxsf' to access shared folders
 ###
 
 
@@ -38,7 +40,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
+git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git $ZSH_CUSTOM/plugins/autoupdate
+git clone https://github.com/zpm-zsh/title.git $ZSH_CUSTOM/plugins/title
 
 ## nerd fonts
 mkdir -p ~/.local/share/fonts
@@ -57,7 +60,7 @@ rm -f lsd_0.17.0_amd64.deb
 
 ### DOTFILES
 
-git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
+#git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles
 
 # zshrc
 cp ~/.config/dotfiles/.zshrc ~/.zshrc
@@ -69,10 +72,6 @@ cp ~/.config/dotfiles/i3.config ~/.config/regolith/i3/config
 # compton
 mkdir -p ~/.config/regolith/compton
 sudo cp ~/.config/dotfiles/compton.config /etc/regolith/compton/config
-
-# i3blocks
-mkdir -p ~/.config/regolith/i3xrocks
-cp -r ~/.config/dotfiles/i3xrocks.conf.d ~/.config/regolith/i3xrocks/conf.d
 
 # gnome terminal
 mkdir -p ~/.config/gtk-3.0
@@ -86,17 +85,20 @@ ranger --copy-config=all
 cp ~/.config/dotfiles/ranger.config ~/.config/ranger/rc.conf
 
 # rofi
-cp -r ~/.config/dotfiles/rofi ~/.config/rofi
+cp -r ~/.config/dotfiles/rofi ~/.config
 
 # polybar
-cp -r ~/.config/dotfiles/polybar ~/.config/polybar
+cp -r ~/.config/dotfiles/polybar ~/.config
 
 # powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 
-# wallpaper
-touch ~/.config/wallpaper.jpg
+# default theme
+cp ~/.config/dotfiles/default_theme/default.jpg ~/.config/wallpaper.jpg
+cp ~/.config/dotfiles/default_theme/default.rasi ~/.config/rofi/hapycolor.rasi
+mkdir -p ~/.config/hapycolor_palettes
+cp ~/.config/dotfiles/default_theme/default.Xresources ~/.config/hapycolor_palettes/.hapycolor.Xresources
 
 
 ### OTHER INSTALLATIONS
@@ -128,9 +130,6 @@ sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth d
 sudo update-initramfs -u
 rm -f cuts_alt.tar.gz
 
-## git
-git config --global user.email "my.email@here.fr"
-git config --global user.name "My Name"
 
 ## vim
 git clone --depth=1 https://github.com/romzie/vimrc.git ~/.vim_runtime
@@ -144,6 +143,35 @@ cd
 ## hapycolor
 pip3 install colormath scipy imgur_downloader
 git clone https://github.com/rvdz/hapycolor ~/.config/hapycolor
-mkdir -p ~/.config/hapycolor_palettes
+
+## lightdm greeter
+sudo apt install -y liblightdm-gobject-1-dev libwebkit2gtk-4.0-dev \
+    libdbus-glib-1-dev gnome-common
+git clone https://github.com/sbalneav/lightdm-webkit2-greeter.git ~/.config/greeter
+cd ~/.config/greeter
+git submodule init && git submodule update
+./autogen.sh --prefix=/usr
+make -j$(nproc)
+sudo sh -c 'echo "greater-session=lightdm-webkit2-greeter" >> /etc/lightdm/lightdm.conf'
+cd
+
+## lightdm greeter theme
+git clone https://github.com/NoiSek/Aether.git ~/.config/Aether
+sudo mkdir -p /usr/share/lightdm-webkit/themes
+sudo cp -r ~/.config/Aether /usr/share/lightdm-webkit/themes/Aether
+
+
+### refresh theme
+regolith-look refresh
+
 
 ### reboot to finish installation
+
+
+### following setup is optional
+
+## git
+#git config --global user.email "my.email@here.fr"
+#git config --global user.name "My Name"
+
+###
