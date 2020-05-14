@@ -1,8 +1,10 @@
 #! /bin/bash
 
 ###
-# This is not a script to launch but rather a fully documented guide
-# since it requires a few manual steps (for git) and manual restarts
+# Install git via 'sudo apt install -y git'
+# Then clone this repo via 'git clone https://github.com/romzie/dotfiles ~/.config/dotfiles'
+# Then you're ready to launch this script via 'bash ~/.config/dotfiles/scripts/regolith-setup.sh'
+# IMPORTANT: say 'no' to change shell to zsh when prompted (it is done already and would break the script)
 #
 # For a VM, mount the Guest Additions ISO and
 # run 'sudo apt install -y build-essential dkms'
@@ -108,18 +110,16 @@ sudo apt install -y libcairo2-dev libxcb-composite0-dev libxcb-randr0-dev \
     xcb-proto libxcb1-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-ewmh-dev \
     libxcb-image0-dev python3-xcbgen libxcb-xrm-dev libxcb-cursor-dev \
     libasound2-dev libnl-genl-3-dev libjsoncpp-dev
-cd ~/.config
 wget https://github.com/polybar/polybar/releases/download/3.4.2/polybar-3.4.2.tar
 tar -xvf polybar-3.4.2.tar
-mv polybar polybar-source
-cd polybar-source
+rm -f polybar-3.4.2.tar
+mv polybar ~/.config/polybar-source
+cd ~/.config/polybar-source
 mkdir build
 cd build
 cmake ..
 make -j$(nproc)
 sudo make install
-cd ~/.config
-rm -f polybar-3.4.2.tar
 cd
 
 ## plymouth theme
