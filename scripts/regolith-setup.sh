@@ -36,12 +36,12 @@ sudo bash -c "echo \"greeter-setup-script=/usr/bin/numlockx on\" >> /usr/share/l
 
 ## oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
-git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git $ZSH_CUSTOM/plugins/autoupdate
-git clone https://github.com/zpm-zsh/title.git $ZSH_CUSTOM/plugins/title
+git clone https://github.com/zsh-users/zsh-autosuggestions.git /home/$USER/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/$USER/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git /home/$USER/.oh-my-zsh/custom/plugins/you-should-use
+git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/$USER/.oh-my-zsh/custom/plugins/zsh-autocomplete
+git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git /home/$USER/.oh-my-zsh/custom/plugins/autoupdate
+git clone https://github.com/zpm-zsh/title.git /home/$USER/.oh-my-zsh/custom/plugins/title
 
 ## nerd fonts
 mkdir -p ~/.local/share/fonts
@@ -91,7 +91,7 @@ cp -r ~/.config/dotfiles/rofi ~/.config
 cp -r ~/.config/dotfiles/polybar ~/.config
 
 # powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$USER/.oh-my-zsh/custom/themes/powerlevel10k
 cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 # default theme
@@ -145,20 +145,17 @@ pip3 install colormath scipy imgur_downloader
 git clone https://github.com/rvdz/hapycolor ~/.config/hapycolor
 
 ## lightdm greeter
-sudo apt install -y liblightdm-gobject-1-dev libwebkit2gtk-4.0-dev \
-    libdbus-glib-1-dev gnome-common
-git clone https://github.com/sbalneav/lightdm-webkit2-greeter.git ~/.config/greeter
-cd ~/.config/greeter
-git submodule init && git submodule update
-./autogen.sh --prefix=/usr
-make -j$(nproc)
-sudo sh -c 'echo "greater-session=lightdm-webkit2-greeter" >> /etc/lightdm/lightdm.conf'
-cd
+#sudo apt install -y python3-whither liglightdm-gobject-dev python3-gi
+#git clone https://github.com/Antergos/web-greeter.git ~/.config/greeter
+#cd ~/.config/greeter
+#sudo make install
+#sudo sh -c 'echo "greater-session=lightdm-webkit2-greeter" >> /etc/lightdm/lightdm.conf'
+#cd
 
 ## lightdm greeter theme
-git clone https://github.com/NoiSek/Aether.git ~/.config/Aether
-sudo mkdir -p /usr/share/lightdm-webkit/themes
-sudo cp -r ~/.config/Aether /usr/share/lightdm-webkit/themes/Aether
+#git clone https://github.com/NoiSek/Aether.git ~/.config/Aether
+#sudo mkdir -p /usr/share/lightdm-webkit/themes
+#sudo cp -r ~/.config/Aether /usr/share/lightdm-webkit/themes
 
 
 ### refresh theme
@@ -166,6 +163,8 @@ regolith-look refresh
 
 
 ### reboot to finish installation
+
+reboot
 
 
 ### following setup is optional
