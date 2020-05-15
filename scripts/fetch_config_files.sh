@@ -19,6 +19,7 @@ cp ~/.config/gtk-3.0/gtk.css ${dotfiles_folder}/gtk.css
 
 # rofi
 cp -r ~/.config/rofi ${dotfiles_folder}
+rm -f ${dotfiles_folder}/rofi/hapycolor.rasi
 
 # Xresources
 cp ~/.config/regolith/Xresources ${dotfiles_folder}/regolith.Xresources

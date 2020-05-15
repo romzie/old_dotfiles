@@ -121,13 +121,15 @@ alias cp='cpv --progress -hhh'
 alias ls='lsd'
 alias pip='pip3'
 alias python='python3'
+alias r='ranger'
 alias rmf='rm -f'
 alias zshrc='vim ~/.zshrc'
 
 # Set zsh plugin variables and settings
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
-PROMPT_TITLE='${PWD}'
-bindkey -M menuselect $key[Tab] menu-complete
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6' # zsh-autosuggestions
+PROMPT_TITLE='${PWD}' # title
+bindkey -M menuselect $key[Tab] menu-complete # zsh-autocomplete
+zstyle ':completion:correct-word:*' tag-order '-' # zsh-autocomplete
 
 # Set custom global variables
 export EDITOR="vim"

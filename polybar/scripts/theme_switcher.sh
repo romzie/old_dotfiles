@@ -21,14 +21,17 @@ refresh_all="refresh all themes"
 # compute nb rows of menu
 
 nb_wallpapers=$(ls $wallpapers_dir | wc -l)
-nb_rows=$(($nb_wallpapers + 2))
-if [[ $nb_rows -gt $nb_max_rows ]]; then
-    if [[ $(($nb_rows % $nb_max_rows)) -gt $(($nb_rows % ($nb_max_rows - 1))) ]]; then
-        nb_rows=$nb_max_rows
+nb_total_rows=$(($nb_wallpapers + 2))
+nb_rows=$nb_total_rows
+divisor=1
+while [[ $nb_rows -gt $nb_max_rows ]]; do
+    divisor=$(($divisor + 1))
+    if [[ $(($nb_total_rows % $divisor)) -ne 0 ]]; then
+        nb_rows=$(($nb_total_rows / $divisor + 1))
     else
-        nb_rows=$(($nb_max_rows - 1))
+        nb_rows=$(($nb_total_rows / $divisor))
     fi
-fi
+done
 
 # add palette colors next to palette name
 options=""
@@ -77,7 +80,7 @@ case $choice in
         ;;
     *)
         palette_short_name=$(echo $choice | awk -F ' ' '{print $1}')
-        wallpaper=$(ls $wallpapers_dir | grep $palette_short_name)
+        wallpaper=$(ls $wallpapers_dir | grep "^$palette_short_name")
         palette_name=${wallpaper%.*}
         cp $palettes_dir/$palette_name.Xresources $palette_config_file_Xresources
         cp $palettes_dir/$palette_name.rasi $palette_config_file_rasi
