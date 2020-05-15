@@ -28,7 +28,7 @@ window {
     anchor: north west;
     x-offset: 24px; // i3 gaps size
     y-offset: 37px; //polybar height + 2* polybar vertical border size
-    width: 51ch;  // 32 colors + ~3 borders + 2 spaces + ~2+2 padding + name
+    width: 57ch;  // 32 colors + 2 spaces + ~1+1 borders + ~3+3 padding + name
 }
 
 listview {
@@ -42,7 +42,7 @@ inputbar, prompt, textbox-prompt-colon, entry {
 element {
     background-color: @border-color;
     text-color: @text-color;
-    padding: 5px 2ch 5px 0px;
+    padding: 5px 3ch 5px 0; //idk why left right is not symmetric
     horizontal-align: 1;
     vertical-align: 0.5;
     border: 0px 10px;

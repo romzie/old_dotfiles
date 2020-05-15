@@ -12,7 +12,7 @@ palette_config_file_Xresources=$palettes_dir/.hapycolor.Xresources
 palette_config_file_rasi=$rofi_dir/hapycolor.rasi
 
 nb_max_rows=36  # to set manually according to preferences
-max_name_len=10  # to set manually to fit window width
+max_name_len=15  # to set manually to fit window width
 options_save_file=/home/$USER/.cache/theme_switcher_options
 
 
@@ -91,7 +91,11 @@ case $choice in
         ;;
     *)
         palette_short_name=$(echo $choice | awk -F ' ' '{print $1}')
-        wallpaper=$(ls $wallpapers_dir | grep "^$palette_short_name")
+        if [[ ${#palette_short_name} -le $max_name_len ]]; then
+            wallpaper=$(ls $wallpapers_dir | grep "^$palette_short_name\.")
+        else
+            wallpaper=$(ls $wallpapers_dir | grep "^$palette_short_name")
+        fi
         palette_name=${wallpaper%.*}
         cp $palettes_dir/$palette_name.Xresources $palette_config_file_Xresources
         cp $palettes_dir/$palette_name.rasi $palette_config_file_rasi
