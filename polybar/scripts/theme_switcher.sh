@@ -13,6 +13,7 @@ palette_config_file_rasi=$rofi_dir/hapycolor.rasi
 
 nb_max_rows=36  # to set manually according to preferences
 max_name_len=10  # to set manually to fit window width
+options_save_file=/home/$USER/.cache/theme_switcher_options
 
 
 refresh="refresh new themes"
@@ -33,30 +34,38 @@ while [[ $nb_rows -gt $nb_max_rows ]]; do
     fi
 done
 
-# add palette colors next to palette name
-options=""
-for image_name in $(ls $wallpapers_dir); do
-    image_name=$(echo $image_name | xargs basename | sed -e 's/\..*//')
-    name=$image_name
-    if [[ ${#name} -gt ${max_name_len} ]]; then
-        name=${name:0:${max_name_len}}
-    fi
-    options="${options}${name}  "
-
-    Xresources=$palettes_dir/$image_name.Xresources
-
-    if [[ -f $Xresources ]]; then
-        for i in {0..15}; do
-            hex_code=$(cat $Xresources | grep "color$i:" | awk -F '#' '{print $2}')
-            hex_code=${hex_code^^}
-            options="${options}<span foreground=\"#${hex_code}\">██</span>"
-        done
-    else
-        options="${options}                "
-        options="${options}                "
-    fi
+# try to load cache themes descriptions
+if [[ -f $options_save_file ]]; then
+    options=$(cat $options_save_file)
     options="${options}"$'\n'
-done
+
+else
+    # add palette colors next to palette name
+    options=""
+    for image_name in $(ls $wallpapers_dir); do
+        image_name=$(echo $image_name | xargs basename | sed -e 's/\..*//')
+        name=$image_name
+        if [[ ${#name} -gt ${max_name_len} ]]; then
+            name=${name:0:${max_name_len}}
+        fi
+        options="${options}${name}  "
+
+        Xresources=$palettes_dir/$image_name.Xresources
+
+        if [[ -f $Xresources ]]; then
+            for i in {0..15}; do
+                hex_code=$(cat $Xresources | grep "color$i:" | awk -F '#' '{print $2}')
+                hex_code=${hex_code^^}
+                options="${options}<span foreground=\"#${hex_code}\">██</span>"
+            done
+        else
+            options="${options}                "
+            options="${options}                "
+        fi
+        options="${options}"$'\n'
+    done
+    echo -e "$options" > $options_save_file
+fi
 
 choice="$(echo -e "$options$refresh\n$refresh_all" | $rofi_cmd -l $nb_rows)"
 
@@ -64,10 +73,12 @@ case $choice in
     "")
         ;;
     $refresh)
+        rm -f $options_save_file
         cd $hapycolor_dir
         python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir &
         ;;
     $refresh_all)
+        rm -f $options_save_file
         palette_save_Xresources=/tmp/hapy_palette_save.Xresources
         palette_save_rasi=/tmp/hapy_palette_save.rasi
         cp $palette_config_file_Xresources $palette_save_Xresources
