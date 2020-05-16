@@ -20,8 +20,12 @@ To allow user to access shared folders:
 ## Installation
 
 run `sudo apt install -y git`
+
 then `git clone https://github.com/romzie/dotfiles.git ~/.config/dotfiles`
-finally `sudo ~/.config/dotfiles/scripts/regolith-setup.sh`
+
+then install dependencies with `sudo ~/.config/dotfiles/scripts/install_dependencies.sh`
+
+finally my theme `sudo ~/.config/dotfiles/scripts/install_themes.sh`
 
 # Bug fixes
 
