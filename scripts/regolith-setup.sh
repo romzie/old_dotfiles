@@ -25,7 +25,7 @@ cp ~/.config/dotfiles/i3.config ~/.config/regolith/i3/config
 
 # compton
 mkdir -p ~/.config/regolith/compton
-sudo cp ~/.config/dotfiles/compton.config /etc/regolith/compton/config
+sudo cp ~/.config/dotfiles/compton.config ~/.config/regolith/compton/config
 
 # gnome terminal
 mkdir -p ~/.config/gtk-3.0

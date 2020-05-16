@@ -128,8 +128,9 @@ alias zshrc='vim ~/.zshrc'
 # Set zsh plugin variables and settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6' # zsh-autosuggestions
 PROMPT_TITLE='${PWD}' # title
+add-zsh-hook -d precmd _zsh_autocomplete__h__keymap-specific_keys # zsh-autocomplete
 bindkey -M menuselect $key[Tab] menu-complete # zsh-autocomplete
-zstyle ':completion:correct-word:*' tag-order '-' # zsh-autocomplete
+zstyle ':completion:correct-word:*' max-errors 0 # zsh-autocomplete
 
 # Set custom global variables
 export EDITOR="vim"
