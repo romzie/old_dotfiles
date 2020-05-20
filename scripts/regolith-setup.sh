@@ -11,6 +11,12 @@ git clone https://github.com/marlonrichert/zsh-autocomplete.git /home/$USER/.oh-
 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git /home/$USER/.oh-my-zsh/custom/plugins/autoupdate
 git clone https://github.com/zpm-zsh/title.git /home/$USER/.oh-my-zsh/custom/plugins/title
 
+## resh
+git clone https://github.com/curusarn/resh.git ~/.config/resh
+cd ~/.config/resh
+bash scripts/rawinstall.sh
+cd
+
 
 ### DOTFILES
 
@@ -36,7 +42,7 @@ cp ~/.config/dotfiles/regolith.Xresources ~/.config/regolith/Xresources
 
 # ranger
 ranger --copy-config=all
-cp ~/.config/dotfiles/ranger.config ~/.config/ranger/rc.conf
+cp -r ~/.config/dotfiles/ranger ~/.config
 
 # rofi
 cp -r ~/.config/dotfiles/rofi ~/.config
@@ -47,6 +53,9 @@ cp -r ~/.config/dotfiles/polybar ~/.config
 # powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/$USER/.oh-my-zsh/custom/themes/powerlevel10k
 cp ~/.config/dotfiles/.p10k.zsh ~/.p10k.zsh
+
+# htop
+cp ~/.config/dotfiles/htoprc ~/.config/htop/htoprc
 
 # default theme
 cp ~/.config/dotfiles/default_theme/default.jpg ~/.config/wallpaper.jpg

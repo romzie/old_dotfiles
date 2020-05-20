@@ -119,6 +119,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 alias cp='cpv --progress -hhh'
 alias ls='lsd'
+alias lst='ls --tree'
 alias pip='pip3'
 alias python='python3'
 alias r='ranger'
@@ -128,9 +129,8 @@ alias zshrc='vim ~/.zshrc'
 # Set zsh plugin variables and settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6' # zsh-autosuggestions
 PROMPT_TITLE='${PWD}' # title
-add-zsh-hook -d precmd _zsh_autocomplete__h__keymap-specific_keys # zsh-autocomplete
 bindkey -M menuselect $key[Tab] menu-complete # zsh-autocomplete
-zstyle ':completion:correct-word:*' max-errors 0 # zsh-autocomplete
+zstyle ':completion:correct-word:*' tag-order '-' # zsh-autocomplete
 
 # Set custom global variables
 export EDITOR="vim"
@@ -138,3 +138,5 @@ export RANGER_LOAD_DEFAULT_RC='FALSE'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.resh/shellrc ] && source ~/.resh/shellrc # this line was added by RESH (Rich Enchanced Shell History)

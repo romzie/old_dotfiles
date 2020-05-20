@@ -75,7 +75,7 @@ case $choice in
     $refresh)
         rm -f $options_save_file
         cd $hapycolor_dir
-        python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir &
+        python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir
         ;;
     $refresh_all)
         rm -f $options_save_file
@@ -87,20 +87,25 @@ case $choice in
         cp $palette_save_Xresources $palette_config_file_Xresources
         cp $palette_save_rasi $palette_config_file_rasi
         cd $hapycolor_dir
-        python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir --refresh &
+        python3 -m hapycolor --dir $wallpapers_dir --Xresources --rasi $palettes_dir --refresh
         ;;
     *)
         palette_short_name=$(echo $choice | awk -F ' ' '{print $1}')
-        if [[ ${#palette_short_name} -le $max_name_len ]]; then
+        if [[ ${#palette_short_name} -lt $max_name_len ]]; then
             wallpaper=$(ls $wallpapers_dir | grep "^$palette_short_name\.")
         else
             wallpaper=$(ls $wallpapers_dir | grep "^$palette_short_name")
         fi
         palette_name=${wallpaper%.*}
+        echo $palette_short_name
+        echo $wallpaper
+        echo $palette_name
         cp $palettes_dir/$palette_name.Xresources $palette_config_file_Xresources
         cp $palettes_dir/$palette_name.rasi $palette_config_file_rasi
         cp $wallpapers_dir/$wallpaper ~/.config/wallpaper.jpg
         regolith-look refresh
+        killall compton
+        /usr/bin/compton -f -b --config /home/$USER/.config/regolith/compton/config
         polybar-msg cmd restart
         ;;
 esac

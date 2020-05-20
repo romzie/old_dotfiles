@@ -9,10 +9,12 @@ cp ~/.config/regolith/i3/config ${dotfiles_folder}/i3.config
 cp ~/.config/regolith/compton/config ${dotfiles_folder}/compton.config
 
 # polybar
+rm -rf ${dotfiles_folder}/polybar
 cp -r ~/.config/polybar ${dotfiles_folder}
 
 # ranger
-cp ~/.config/ranger/rc.conf ${dotfiles_folder}/ranger.config
+cp ~/.config/ranger/rc.conf ${dotfiles_folder}/ranger/rc.conf
+cp ~/.config/ranger/colorschemes/hapycolor.py ${dotfiles_folder}/ranger/colorschemes/hapycolor.py
 
 # gnome-terminal theme
 cp ~/.config/gtk-3.0/gtk.css ${dotfiles_folder}/gtk.css
@@ -29,3 +31,6 @@ cp ~/.zshrc ${dotfiles_folder}/.zshrc
 
 # powerlevel10k
 cp ~/.p10k.zsh ${dotfiles_folder}/.p10k.zsh
+
+# htop
+cp ~/.config/htop/htoprc ${dotfiles_folder}/htoprc

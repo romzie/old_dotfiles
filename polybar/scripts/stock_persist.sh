@@ -1,6 +1,8 @@
 #! /bin/bash
 
-stocks_cmd="python3 /home/$USER/.config/polybar/scripts/get_stock.py --short"
+symbols="BNP.PA AIR.PA GLE.PA AC.PA"
+
+stocks_cmd="python3 /home/$USER/.config/polybar/scripts/get_stock.py --symbols $symbols"
 
 sleep_duration=20
 long_sleep=3600
