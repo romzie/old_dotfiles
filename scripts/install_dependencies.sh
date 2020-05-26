@@ -10,7 +10,7 @@ sudo apt update
 
 sudo apt install -y git wget zsh build-essential dkms htop neofetch autojump \
     vim python3-dev python3-pip cmake numlockx libnotify-bin ranger highlight \
-    papirus-icon-theme net-tools imagemagick feh
+    papirus-icon-theme net-tools imagemagick feh mutter-common curl
 
 pip3 install i3ipc
 
